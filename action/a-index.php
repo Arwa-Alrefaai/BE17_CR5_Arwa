@@ -21,7 +21,7 @@ if (mysqli_num_rows($result)  > 0) {
             <td>" . $row['name'] . "</td>
             <td>" . $row['age'] . "</td>
             <td>" . $row['vaccinated'] . "</td>
-            <td><a href='../details.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Show details</button></a>
+            <td><a href='../a-details.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Show details</button></a>
             <td><a href='update.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Edit</button></a>
             <a href='../delete.php?id=" . $row['id'] . "'><button class='btn btn-danger btn-sm' type='button'>Delete</button></a></td>
 
@@ -82,7 +82,7 @@ mysqli_close($connect);
         .add {
             margin-top: 15px;
             margin-bottom: 15px;
-             
+
         }
 
         .adto {
@@ -126,6 +126,7 @@ mysqli_close($connect);
         </tbody>
     </table>
     </div>
+        <button class="btn btn-primary adto " type="button"><a class="nav-link" href="../logout.php">logout</a></button>
     <footer class=" p-5 bg-dark">
         <p class="h6 text-center text-white">Made by <a href="#">&#x24B8 Arwa Alrefaai</a></p>
     </footer>

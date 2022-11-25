@@ -14,41 +14,42 @@ if ($_GET['id']) {
         $size = $data['size'];
         $age = $data['age'];
         $vaccinated = $data['vaccinated'];
+        
     }
 } else {
     header("location: error.php");
 }
 
-// $class = 'd-none';
-// if (isset($_POST["submit"])) {
-//     $name = $_POST['name'];
-//     $address = $_POST['address'];
-//     $description = $_POST['description'];
-//     $size = $_POST['size'];
-//     $age = $_POST['age'];
-//     $vaccinated = $_POST['vaccinated'];
-//     $id = $_POST['id'];
-// $uploadError = '';
-// $pictureArray = file_upload($_FILES['pictures']); 
-// $picture = $pictureArray->fileName;
-// if ($pictureArray->error === 0) {
-//     ($_POST["pictures"] == "avatar.png") ?: unlink("pictures/{$_POST["picture"]}");
-//     $sql = "UPDATE users SET first_name = '$f_name', last_name = '$l_name', email = '$email', date_of_birth = '$date_of_birth', picture = '$pictureArray->fileName' WHERE id = {$id}";
-// } else {
-//     $sql = "UPDATE users SET first_name = '$f_name', last_name = '$l_name', email = '$email', date_of_birth = '$date_of_birth' WHERE id = {$id}";
-// }
-// if (mysqli_query($connect, $sql) === true) {
-//     $class = "alert alert-success";
-//     $message = "The record was successfully updated";
-// $uploadError = ($pictureArray->error != 0) ? $pictureArray->ErrorMessage : '';
-// header("refresh:3;url=update.php?id={$id}");
-// } else {
-//     $class = "alert alert-danger";
-//     $message = "Error while updating record : <br>" . $connect->error;
-// $uploadError = ($pictureArray->error != 0) ? $pictureArray->ErrorMessage : '';
-// header("refresh:3;url=update.php?id={$id}");
-// }
-// }
+$class = 'd-none';
+if (isset($_POST["submit"])) {
+    $name = $_POST['name'];
+    $address = $_POST['address'];
+    $description = $_POST['description'];
+    $size = $_POST['size'];
+    $age = $_POST['age'];
+    $vaccinated = $_POST['vaccinated'];
+    $id = $_POST['id'];
+$uploadError = '';
+$pictureArray = file_upload($_FILES['pictures']); 
+$picture = $pictureArray->fileName;
+if ($pictureArray->error === 0) {
+    ($_POST["pictures"] == "avatar.png") ?: unlink("pictures/{$_POST["picture"]}");
+    $sql = "UPDATE `animals` SET name = 'name', adress = '$address', email = '$email', description = '$description', picture = '$pictureArray->fileName' WHERE id = {$id}";
+} else {
+    $sql = "UPDATE `animals` SET name = '$name', address = '$address', email = '$email', description = '$description' WHERE id = {$id}";
+}
+if (mysqli_query($connect, $sql) === true) {
+    $class = "alert alert-success";
+    $message = "The record was successfully updated";
+$uploadError = ($pictureArray->error != 0) ? $pictureArray->ErrorMessage : '';
+header("refresh:3;url=update.php?id={$id}");
+} else {
+    $class = "alert alert-danger";
+    $message = "Error while updating record : <br>" . $connect->error;
+$uploadError = ($pictureArray->error != 0) ? $pictureArray->ErrorMessage : '';
+header("refresh:3;url=update.php?id={$id}");
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

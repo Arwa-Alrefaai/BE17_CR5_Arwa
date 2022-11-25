@@ -3,7 +3,7 @@ session_start();
 require_once 'components/db_connect.php';
 
 // if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
-//     header("Location: .php");
+//     header("Location: home.php");
 //     exit;
 // }
 // if (isset($_SESSION['user'])) {
@@ -13,7 +13,7 @@ require_once 'components/db_connect.php';
 
 $sql = "SELECT * FROM `animals`";
 $result = mysqli_query($connect, $sql);
-$tbody = ''; //this variable will hold the body for the table
+$tbody = '';
 if (mysqli_num_rows($result)  > 0) {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $tbody .= "<tr>
@@ -108,6 +108,7 @@ mysqli_close($connect);
         </tbody>
     </table>
     </div>
+    <button class="btn btn-primary adto " type="button"><a class="nav-link" href="../logout.php">logout</a></button>
     <footer class=" p-5 bg-dark">
         <p class="h6 text-center text-white">Made by <a href="#">&#x24B8 Arwa Alrefaai</a></p>
     </footer>

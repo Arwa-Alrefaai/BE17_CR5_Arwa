@@ -1,28 +1,29 @@
 <?php
+require_once 'components/db_connect.php';
 session_start();
 
 // if (isset($_SESSION['user'])) {
-//     header("Location: index.php");
+//     header("Location: login.php");
 //     exit;
 // }
 
 // if (isset($_SESSION['adm'])) {
-//     header("Location: a-index.php");
+//     header("Location: action/a-index.php");
 //     exit;
 // }
-require_once 'components/db_connect.php';
+
 
 $error = false;
-$email = $pass = $emailError = $passError = "";
+$email = $password = $emailError = $passwordError = "";
 
 if (isset($_POST['btn-login'])) {
     $email = trim($_POST['email']);
     $email = strip_tags($email);
     $email = htmlspecialchars($email);
 
-    $pass = trim($_POST['pass']);
-    $pass = strip_tags($pass);
-    $pass = htmlspecialchars($pass);
+    $password = trim($_POST['password']);
+    $password = strip_tags($password);
+    $password = htmlspecialchars($password);
 
     if (empty($email)) {
         $error = true;
@@ -31,13 +32,13 @@ if (isset($_POST['btn-login'])) {
         $error = true;
         $emailError = "Please enter valid email address.";
     }
-    if (empty($pass)) {
+    if (empty($password)) {
         $error = true;
-        $passError = "Please enter your password.";
+        $passwordError = "Please enter your password.";
     }
 
     if (!$error) {
-        $password = hash('sha256', $pass);
+        // $password = hash('sha256', $password);
         $sql = "SELECT * FROM `users` WHERE email= '$email' AND password = '$password'";
         $result = mysqli_query($connect, $sql);
         $row = mysqli_fetch_assoc($result);
@@ -47,7 +48,7 @@ if (isset($_POST['btn-login'])) {
         if ($count == 1) {
             if ($row['status'] == "adm") {
                 $_SESSION['adm'] = $row['id'];
-                header("Location: a-index.php");
+                header("Location: action/a-index.php");
                 exit;
             } else {
                 $_SESSION['user'] = $row['id'];
@@ -105,8 +106,8 @@ mysqli_close($connect);
                 <input type="email" autocomplete="off" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email ?>" maxlength="40" />
                 <span class="text-danger"><?php echo $emailError ?></span><br>
 
-                <input type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" />
-                <span class="text-danger"><?php echo $passError ?></span>
+                <input type="password" name="password" class="form-control" placeholder="Your Password" maxlength="15" />
+                <span class="text-danger"><?php echo $passwordError ?></span>
                 <button class="btn btn-block btn-primary m-3" type="submit" name="btn-login">Sign In</button>
                 <hr />
                 <span> Dont have an account? </span> <a href="register.php"> Click here to register</a>

@@ -1,15 +1,15 @@
 <?php
 session_start();
 
-if (isset($_SESSION['user'])) {
-    header("Location: index.php");
-    exit;
-}
+// if (isset($_SESSION['user'])) {
+//     header("Location: home.php");
+//     exit;
+// }
 
-if (isset($_SESSION['adm'])) {
-    header("Location: a-index.php");
-    exit;
-}
+// if (isset($_SESSION['adm'])) {
+//     header("Location: a-index.php");
+//     exit;
+// }
 require_once 'components/db_connect.php';
 require_once 'components/file_upload.php';
 
@@ -95,8 +95,8 @@ if (isset($_POST['btn-signup'])) {
     $password = hash('sha256', $pass);
 
     if (!$error) {
-        $query = "INSERT INTO users(first_name, last_name, password, address,email, picture) 
-        VALUES ('$fname', '$lname','$password','$address', '$email', '$picture->fileName')";
+        $query = "INSERT INTO `users`( password, address, email , picture) 
+        VALUES ('$password','$address', '$email', '$picture->fileName')";
 
         $res = mysqli_query($connect, $query);
 
@@ -122,7 +122,7 @@ mysqli_close($connect);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration System</title>
+    <title>Register</title>
     <link rel="stylesheet" type='text/css' href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

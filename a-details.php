@@ -12,7 +12,6 @@ if ($_GET['id']) {
         $photo = $data['photo'];
         $age = $data['age'];
         $live = $data['live'];
-        $id = $data['id'];
         $description = $data['description'];
     }
 }
@@ -24,7 +23,7 @@ if ($_GET['id']) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adopt</title>
+    <title>details</title>
     <link rel="stylesheet" type='text/css' href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +47,7 @@ if ($_GET['id']) {
         <div class="card mb-3">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="./pictures/<?= $photo; ?>" class="img-fluid rounded-start" style="height:21rem;width:100%;object-fit:cover;" alt="Kitty">
+                    <img src="pictures/<?= $photo; ?>" class="img-fluid rounded-start" style="height:21rem;width:100%;object-fit:cover;" alt="Kitty">
                 </div>
                 <div class="col-md-8">
                     <h4 class='card-header text-center' name="name"><?= $name; ?></h4>
@@ -61,9 +60,8 @@ if ($_GET['id']) {
                         <p class='card-text'></p>
                     </div>
                     <div class='card-footer text-center'>
-                        <a class='btn btn-primary' href='index.php?id=$id'>Go Back</a>
-                        <a class='btn btn-success' href='adopt.php?id=<?= $id?>'>Take me Home</a>
-                       
+                        <a class='btn btn-primary' href='action/a-index.php'>Go Back</a>
+                        <a class='btn btn-success' href='adopt.php?id=$id'>Take me Home</a>
                     </div>
                 </div>
             </div>
@@ -71,8 +69,8 @@ if ($_GET['id']) {
 
     </main>
     <footer class=" p-5 bg-dark">
-                            <p class="h6 text-center text-white">Made by <a href="#">&#x24B8 Arwa Alrefaai</a></p>
-                            </footer>
+        <p class="h6 text-center text-white">Made by <a href="#">&#x24B8 Arwa Alrefaai</a></p>
+    </footer>
 </body>
 
 </html>

@@ -3,7 +3,7 @@ require_once "../components/db_connect.php";
 function file_upload($picture)
 {
     $result = new stdClass(); 
-    $result->fileName = 'default.jpg';
+    $result->fileName = '../pictures/default.jpg';
     $result->error = 1; 
     $fileName = $picture["name"];
     $fileType = $picture["type"];
@@ -12,7 +12,7 @@ function file_upload($picture)
     $fileSize = $picture["size"];
     $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
     $filesAllowed = ["png", "jpg", "jpeg"];
-    if ($fileError == 4) {
+    if ($fileError == 4) { 
         $result->ErrorMessage = "No picture was chosen. It can always be updated later.";
         return $result;
     } else {

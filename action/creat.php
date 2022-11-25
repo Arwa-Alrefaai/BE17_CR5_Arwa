@@ -1,13 +1,13 @@
 <?php
-// session_start();
-// require_once '../components/db_connect.php';
+session_start();
+require_once '../components/db_connect.php';
 
 // if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
-//     header("Location: ../index.php");
+//     header("Location: ../login.php");
 //     exit;
 // }
 // if (isset($_SESSION['user'])) {
-//     header("Location: ../home.php");
+//     header("Location: ../index.php");
 //     exit;
 // }
 
@@ -39,7 +39,7 @@
 <body>
     <fieldset>
         <legend class='h2'>Add Pet</legend>
-        <form action="action/a_create.php" method="post" enctype="multipart/form-data">
+        <form action ="./a_creat.php" method="post" enctype="multipart/form-data">
             <table class='table'>
                 <tr>
                     <th>Name</th>
